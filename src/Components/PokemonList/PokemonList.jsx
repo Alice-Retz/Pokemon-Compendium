@@ -1,10 +1,9 @@
 import React from 'react';
-import Pokemon from '../Pokemon/Pokemon';
 
 export default function PokemonList({ pokemon }) {
 	return (
 		<div>
-			{pokemon.map((pokemon) => {
+			{pokemon.map((pokemon) => (
 				<div className='pokeEntry'>
 					<h1 key={pokemon.pokemon}>{pokemon.pokemon}</h1>
 					<img
@@ -21,8 +20,8 @@ export default function PokemonList({ pokemon }) {
 					<h3 key={pokemon.egg_group_1}>
 						Egg Group: {pokemon.egg_group_1}/{pokemon.egg_group_2}
 					</h3>
-				</div>;
-			})}
+				</div>
+			))}
 		</div>
 	);
 }
