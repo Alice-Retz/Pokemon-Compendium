@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import './Pokemon.css';
 
-export default function Pokemon({ pokemon }) {
+export default function Pokemon({ pokeEntry }) {
 	const {
 		name,
 		pic,
@@ -12,11 +12,12 @@ export default function Pokemon({ pokemon }) {
 		hiddenAbility,
 		eggGroup1,
 		eggGroup2,
-	} = pokemon;
+	} = pokeEntry;
 
 	const hasSecondType = type2 !== 'NA';
 	const hasSecondAbility = ability2 !== 'NA';
 	const hasSecondEggGroup = eggGroup2 !== 'NA';
+	const hasHiddenAbility = hiddenAbility !== 'NA';
 
 	return (
 		<article className='pokeEntry'>
@@ -24,16 +25,17 @@ export default function Pokemon({ pokemon }) {
 			<img src={pic} alt={`${name}`} />
 			<div className='details'>
 				<p>
-					{type1}
+					Type: {type1}
 					{hasSecondType && `/${type2}`}
 				</p>
 				<p>
-					{ability1}
+					Ability(s): {ability1}
 					{hasSecondAbility && `/${ability2}`}
-					{hiddenAbility}
+					<br />
+					Hidden Ability: {hasHiddenAbility}
 				</p>
 				<p>
-					{eggGroup1}
+					Egg Group(s): {eggGroup1}
 					{hasSecondEggGroup && `/${eggGroup2}`}
 				</p>
 			</div>
@@ -42,7 +44,7 @@ export default function Pokemon({ pokemon }) {
 }
 
 Pokemon.propTypes = {
-	pokemon: PropTypes.shape({
+	pokeEntry: PropTypes.shape({
 		name: PropTypes.string.isRequired,
 		pic: PropTypes.string.isRequired,
 		type1: PropTypes.string.isRequired,

@@ -5,13 +5,15 @@ import {
 	fetchPokemon,
 	fetchPokemonTypes,
 	fetchFilteredPokemon,
+	fetchSortedPokemon,
 } from '../../services/pokemon';
 
 export default function Compendium() {
 	const [loading, setLoading] = useState(true);
 	const [pokemon, setPokemon] = useState([]);
 	const [pokemonTypes, setPokemonTypes] = useState([]);
-	const [selectedType, setSelectedType] = useState('fairy');
+	const [selectedType, setSelectedType] = useState('');
+	const [sortedMons, setSortedMons] = useState('');
 
 	useEffect(() => {
 		async function getPokemon() {
@@ -44,6 +46,22 @@ export default function Compendium() {
 		getFilteredPokemon();
 	}, [selectedType]);
 
+	useEffect(() => {
+		if (!sortedMons) return;
+		async function sortTheMons() {
+			setLoading(true);
+			if (sortedMons === 'ascending') {
+				const newOrder = await fetchSortedPokemon(selectedType, 'asc');
+				setPokemon(newOrder);
+			} else {
+				const newOrder = await fetchSortedPokemon(selectedType, 'desc');
+				setPokemon(newOrder);
+			}
+			setLoading(false);
+		}
+		sortTheMons();
+	}, [sortedMons]);
+
 	// Example of how to use useEffect with dependencies
 	// useEffect(() => {}, [state]);
 
@@ -52,15 +70,20 @@ export default function Compendium() {
 	if (loading) {
 		return <h1>Loading...</h1>;
 	}
-
 	return (
 		<>
-			<Filter
-				pokemonTypes={pokemonTypes}
-				selectedType={selectedType}
-				handleChange={setSelectedType}
-			/>
-			<PokemonList pokemon={pokemon} />
+			<header>
+				<Filter
+					pokemonTypes={pokemonTypes}
+					selectedType={selectedType}
+					handleChange={setSelectedType}
+					sortedChange={sortedMons}
+					handleSortChange={setSortedMons}
+				/>
+			</header>
+			<main>
+				<PokemonList pokeArray={pokemon} />
+			</main>
 		</>
 	);
 }

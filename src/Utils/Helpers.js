@@ -1,5 +1,6 @@
-export const getEggGroup = (eggGroupId, pokemon) => {
+export const getEggGroup = (pokemon) => {
 	let eggGroup;
+	const eggGroupId = pokemon.egg_group_1;
 
 	switch (eggGroupId) {
 		case 'indeterminate':
@@ -18,16 +19,19 @@ export const getEggGroup = (eggGroupId, pokemon) => {
 	return eggGroup;
 };
 
-export const pokeMunger = (pokemon) => {
-	return {
-		name: pokemon.pokemon,
-		pic: pokemon.url_image,
-		typeOne: pokemon.type_1,
-		typeTwo: pokemon.type_2,
-		abilityOne: pokemon.ability_1,
-		abilityTwo: pokemon.ability_2,
-		hiddenAbility: pokemon.ability_hidden,
-		eggGroup1: getEggGroup(pokemon.pokemon.egg_group_1),
-		eggGroup2: pokemon.egg_group_2,
-	};
+export const pokeMunger = (pokeResults) => {
+	return pokeResults.map((pokemon) => {
+		return {
+			pokeId: pokemon._id,
+			name: pokemon.pokemon,
+			pic: pokemon.url_image,
+			type1: pokemon.type_1,
+			type2: pokemon.type_2,
+			ability1: pokemon.ability_1,
+			ability2: pokemon.ability_2,
+			hiddenAbility: pokemon.ability_hidden,
+			eggGroup1: getEggGroup(pokemon),
+			eggGroup2: pokemon.egg_group_2,
+		};
+	});
 };

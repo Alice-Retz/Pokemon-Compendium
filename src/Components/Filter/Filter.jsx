@@ -1,6 +1,12 @@
 import React from 'react';
 
-export default function Filter({ pokemonTypes, selectedType, handleChange }) {
+export default function Filter({
+	pokemonTypes,
+	selectedType,
+	handleChange,
+	sortedChange,
+	handleSortChange,
+}) {
 	return (
 		<div>
 			<select
@@ -16,6 +22,16 @@ export default function Filter({ pokemonTypes, selectedType, handleChange }) {
 						</option>
 					);
 				})}
+			</select>
+			<select
+				value={sortedChange}
+				onChange={(e) => handleSortChange(e.target.value)}>
+				<option key='ascending' value='ascending'>
+					Ascending
+				</option>
+				<option key='descending' value='descending'>
+					Descending
+				</option>
 			</select>
 		</div>
 	);

@@ -1,27 +1,35 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Pokemon from '../Pokemon/Pokemon';
+import './PokemonList.css';
 
-export default function PokemonList({ pokemon }) {
+export default function PokemonList({ pokeArray }) {
 	return (
-		<div>
-			{pokemon.map((pokemon) => (
-				<div className='pokeEntry'>
-					<h1 key={pokemon.pokemon}>{pokemon.pokemon}</h1>
-					<img
-						src={pokemon.url_image}
-						alt='the official artwork of the pokemon from nintendo'
-					/>
-					<h3 key={pokemon.type_1}>
-						{pokemon.type_1}/{pokemon.type_2}
-					</h3>
-					<h3 key={pokemon.ability_1}>Primary Ability: {pokemon.ability_1}</h3>
-					<h3 key={pokemon.ability_hidden}>
-						Hidden Ability: {pokemon.ability_hidden}
-					</h3>
-					<h3 key={pokemon.egg_group_1}>
-						Egg Group: {pokemon.egg_group_1}/{pokemon.egg_group_2}
-					</h3>
-				</div>
-			))}
-		</div>
+		<ul className='cardContainer'>
+			{pokeArray.map((pokeEntry) => {
+				return (
+					<li key={pokeEntry.pokeId}>
+						<Pokemon pokeEntry={pokeEntry} />
+					</li>
+				);
+			})}
+		</ul>
 	);
 }
+
+PokemonList.propTypes = {
+	pokeArray: PropTypes.arrayOf(
+		PropTypes.shape({
+			pokeId: PropTypes.string.isRequired,
+			name: PropTypes.string.isRequired,
+			pic: PropTypes.string.isRequired,
+			type1: PropTypes.string.isRequired,
+			type2: PropTypes.string.isRequired,
+			ability1: PropTypes.string.isRequired,
+			ability2: PropTypes.string.isRequired,
+			hiddenAbility: PropTypes.string.isRequired,
+			eggGroup1: PropTypes.string.isRequired,
+			eggGroup2: PropTypes.string.isRequired,
+		}).isRequired
+	),
+};
