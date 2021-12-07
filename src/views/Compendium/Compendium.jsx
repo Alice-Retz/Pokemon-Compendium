@@ -60,7 +60,7 @@ export default function Compendium() {
 			setLoading(false);
 		}
 		sortTheMons();
-	}, [sortedMons]);
+	}, [selectedType, sortedMons]);
 
 	// Example of how to use useEffect with dependencies
 	// useEffect(() => {}, [state]);
