@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`displays a list of pokemon 1`] = `
+<ul
+  class="cardContainer"
+>
+  <li>
+    <article
+      class="pokeEntry"
+    >
+      <h2>
+        butterfree
+      </h2>
+      <img
+        alt="butterfree"
+        src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/012.png"
+      />
+      <div
+        class="details"
+      >
+        <p>
+          Type: 
+          bug
+          /flying
+        </p>
+        <p>
+          Ability(s): 
+          compound-eyes
+          <br />
+          Hidden Ability: 
+        </p>
+        <p>
+          Egg Group(s): 
+          bug
+        </p>
+      </div>
+    </article>
+  </li>
+  <li>
+    <article
+      class="pokeEntry"
+    >
+      <h2>
+        venusaur-mega
+      </h2>
+      <img
+        alt="venusaur-mega"
+        src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/012.png"
+      />
+      <div
+        class="details"
+      >
+        <p>
+          Type: 
+          grass
+          /poison
+        </p>
+        <p>
+          Ability(s): 
+          thick-fat
+          <br />
+          Hidden Ability: 
+        </p>
+        <p>
+          Egg Group(s): 
+          grass
+          /poison
+        </p>
+      </div>
+    </article>
+  </li>
+  <li>
+    <article
+      class="pokeEntry"
+    >
+      <h2>
+        pidgeotto
+      </h2>
+      <img
+        alt="pidgeotto"
+        src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/012.png"
+      />
+      <div
+        class="details"
+      >
+        <p>
+          Type: 
+          normal
+          /flying
+        </p>
+        <p>
+          Ability(s): 
+          keen-eye
+          /tangled-feet
+          <br />
+          Hidden Ability: 
+        </p>
+        <p>
+          Egg Group(s): 
+          normal
+          /flying
+        </p>
+      </div>
+    </article>
+  </li>
+</ul>
+`;

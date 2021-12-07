@@ -1,0 +1,13 @@
+img {
+	max-width: 150px;
+	height: auto;
+}
+
+.pokeEntry {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 300px;
+	margin: 5px;
+	background-color: aliceblue;
+}
