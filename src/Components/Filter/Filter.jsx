@@ -26,6 +26,9 @@ export default function Filter({
 			<select
 				value={sortedChange}
 				onChange={(e) => handleSortChange(e.target.value)}>
+				<option key='order' value='order'>
+					Order:
+				</option>
 				<option key='ascending' value='ascending'>
 					Ascending
 				</option>
